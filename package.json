@@ -21,8 +21,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-napp/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -39,7 +38,6 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
-    
   },
-  "homepage": "https://ebregains.github.io/get-things-done"
+  "homepage": "https://ebregains.github.io/get-things-done/public"
 }
