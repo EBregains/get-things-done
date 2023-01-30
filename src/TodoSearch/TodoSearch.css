@@ -1,0 +1,44 @@
+.TodoSearch {
+  margin: 0 5vw;
+  padding: 6px 0 6px 6px;
+  background-color: #FAFAFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  border-radius: 6px;
+
+}
+
+.TodoSearch-input {
+  width: calc(100% - 90px);
+  height: 56px;
+  border-width: 0px;
+  background-color: #FAFAFA;
+  padding: 0px 24px;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+.Icon {
+  cursor: pointer;
+  color: #FAFAFA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+}
+
+.Icon-search {
+  background-color: #4E4E50;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}

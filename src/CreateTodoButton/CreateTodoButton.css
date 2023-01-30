@@ -1,0 +1,83 @@
+.CreateTodoButton {
+  margin: 0;
+  padding: 0 5vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+}
+
+.CreateTodoButton-taskbar {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background-color: #FAFAFA;
+
+}
+
+.CreateTodoButton-taskbar-input {
+  width: calc(100% - 80px);
+  border-width: 0;
+  height: 56px;
+  padding: 0px 12px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  border-radius: 6px;
+}
+
+.CreateTodoButton-taskbar-button {
+  margin: 6px;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  color: #FAFAFA;
+  background-color: #008CBA;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.CreateTodoButton-tagbar {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 48px; 
+}
+
+label {
+  color: #FAFAFA;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+input {
+  cursor: pointer;
+}
+
+.tagbar-input {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.bg-pink {
+  background-color: #950740;
+}
+
+.bg-red {
+  background-color: #C3073F;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

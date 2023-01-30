@@ -1,0 +1,35 @@
+.InfoGraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FAFAFA;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.InfoGraph-p {
+  margin: 0;
+}
+
+.InfoGraph-icon {
+  font-size: 120px;
+  padding-bottom: 12px;
+}
+
+.loadingItem {
+  animation-name: rotate360;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

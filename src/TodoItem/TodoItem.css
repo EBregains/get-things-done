@@ -1,0 +1,65 @@
+.TodoItem {
+  padding: 6px;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+}
+
+.TodoItem--complete {
+  background-color: #FAFAFA;
+}
+
+.TodoItem-p {
+  text-align: left;
+  margin: 0px 24px;
+  width: calc(100% - 136px);
+}
+
+.TodoItem-p--complete {
+  text-decoration: line-through;
+}
+
+.Icon {
+  cursor: pointer;
+  color: #FAFAFA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 44px;
+  border-radius: 6px;
+}
+
+
+.TodoItem--urgent {
+  border-left-style: solid;
+  border-left-color: #C3073F;
+  border-left-width: 4px;
+}
+
+.TodoItem--important {
+  font-weight: 600;
+}
+
+
+.Icon-check {
+  background-color: #CDCDCD;
+}
+
+.Icon-check--active {
+  color: darkolivegreen;
+  background-color: #FFF;
+  font-weight: bold;
+}
+
+.Icon-delete {
+  font-weight: bold;
+  background-color: none;
+  color: #CDCDCD;
+}
+
+.Icon-delete:hover {
+  color: #C3073F;
+}
