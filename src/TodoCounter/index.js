@@ -6,16 +6,13 @@ import './TodoCounter.css';
 function TodoCounter() {
 
   const setCounterIcon = (total, done) => {
-    if (done !== 0) {
-      let ratio = total / done;
-      if ( ratio === 1) return '😎';
-      else if ( ratio <= 1.3) return '🙂'
-      else if ( ratio <= 2) return '😰';
-      else if ( ratio <= 3) return '🥵';
+      let left = total - done;
+      if ( done === 0) return '🤔'
+      if ( left === 0) return '😎';
+      else if ( left <= 4) return '🙂'
+      else if ( left <= 8) return '😰';
+      else if ( left <= 12) return '🥵';
       else return '🫠';
-    } else if (total !== 0) {
-      return '🥱';
-    } else return '🤔';
   }
 
   const { numCompletedTodos, numTotalTodos } = React.useContext(TodoContext)

@@ -35,6 +35,14 @@ function TodoProvider(props) {
   }
 
   const addTodo = ( text, isImportant, isUrgent) => {
+    // Check for duplicates
+    arrTodos.forEach((todo) => {
+      let sufix = '';
+      if (todo.text === text) {
+        sufix = ` #`;
+      }
+      text = text + sufix
+    });
     const newArrTodos = [...arrTodos];
     newArrTodos.push({
       text,
