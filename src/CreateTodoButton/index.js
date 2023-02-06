@@ -4,7 +4,7 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton() {
 
-  const { addTodo } = React.useContext(TodoContext);
+  const { addTodo, setFlorMode } = React.useContext(TodoContext);
 
   const [newTodoValue, setNewTodoValue] = React.useState('');
   const [isImportant, setIsImportant] = React.useState(false);
@@ -13,24 +13,25 @@ function CreateTodoButton() {
   const checkboxOnChange = (value, hook) => {
     hook(!value);
   }
+
   const onChange = (event) => {
-    if(event.target.value.match(/^\$i/)) {
+    if(event.target.value.match(/\$i/)) {
       setIsImportant(!isImportant);
-      setNewTodoValue('');
+      setNewTodoValue(event.target.value.replace(/\$i/, ''));
     }
-    else if (event.target.value.match(/^\$u/)) {
+    else if (event.target.value.match(/\$u/)) {
       setIsUrgent(!isUrgent);
-      setNewTodoValue('');
+      setNewTodoValue(event.target.value.replace(/\$u/, ''));
     }
     else {
       setNewTodoValue(event.target.value);
     }
+    if (event.target.value.match(/Flor/)) {setFlorMode(true)}
   }
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (newTodoValue.length 
-      !== 0) {
+    if (newTodoValue.length !== 0) {
     addTodo(newTodoValue, isImportant, isUrgent);
     setIsImportant(false);
     setIsUrgent(false);

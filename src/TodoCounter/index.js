@@ -15,7 +15,7 @@ function TodoCounter() {
       else return '🫠';
     } else if (total !== 0) {
       return '🥱';
-    } else return '😶';
+    } else return '🤔';
   }
 
   const { numCompletedTodos, numTotalTodos } = React.useContext(TodoContext)

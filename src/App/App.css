@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.Flor {
+  width: 5vh;
+  position: absolute;
+  right: 2vh;
+  bottom: 2vh;
+}

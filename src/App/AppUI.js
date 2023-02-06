@@ -8,6 +8,7 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { EmptyList } from "../InfoGraphs/EmptyList";
 import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
 import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
+import './App.css'
 
 
 
@@ -18,7 +19,7 @@ function AppUI() {
     loading,
     searchedTodos,
     toggleCheckTodo,
-    deleteTodo,
+    deleteTodo
   } = React.useContext(TodoContext);
 
   return (
@@ -41,7 +42,6 @@ function AppUI() {
         ))}
       </TodoList>
       <TodoSearch />
-      {/* <CatMemesModal /> */}
     </React.Fragment>
   )
 }

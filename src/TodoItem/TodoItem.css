@@ -29,7 +29,7 @@
   align-items: center;
   height: 44px;
   width: 44px;
-  border-radius: 6px;
+  border-radius: 50%;
 }
 
 
@@ -49,8 +49,8 @@
 }
 
 .Icon-check--active {
-  color: darkolivegreen;
-  background-color: #FFF;
+  color: #FFF;
+  background-color: darkolivegreen;
   font-weight: bold;
 }
 
