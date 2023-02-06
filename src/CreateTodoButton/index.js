@@ -4,7 +4,7 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton() {
 
-  const { addTodo, setFlorMode } = React.useContext(TodoContext);
+  const { addTodo } = React.useContext(TodoContext);
 
   const [newTodoValue, setNewTodoValue] = React.useState('');
   const [isImportant, setIsImportant] = React.useState(false);
@@ -26,7 +26,6 @@ function CreateTodoButton() {
     else {
       setNewTodoValue(event.target.value);
     }
-    if (event.target.value.match(/Flor/)) {setFlorMode(true)}
   }
 
   const onSubmit = (event) => {

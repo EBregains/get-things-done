@@ -13,6 +13,7 @@ function TodoProvider(props) {
     error,
   } = useLocalStorage('TODOS_V1', []);
 
+  const [florMode, setFlorMode] = React.useState(false);
   // SETTING UP REACT HOOKS
   const [searchValue, setSearchValue] = React.useState('');
   
@@ -35,7 +36,7 @@ function TodoProvider(props) {
   }
 
   const addTodo = ( text, isImportant, isUrgent) => {
-    // Check for duplicates
+    // Check for duplicates.
     arrTodos.forEach((todo) => {
       let sufix = '';
       if (todo.text === text) {
@@ -43,6 +44,9 @@ function TodoProvider(props) {
       }
       text = text + sufix
     });
+    // Check for the word "Flor" to start flor mode.
+    if ( text.match(/Flor/) ) setFlorMode(true);
+    // Add todo
     const newArrTodos = [...arrTodos];
     newArrTodos.push({
       text,
@@ -79,6 +83,7 @@ function TodoProvider(props) {
     <TodoContext.Provider value={{
       loading,
       error,
+      florMode,
       numTotalTodos,
       numCompletedTodos,
       searchValue,

@@ -17,6 +17,7 @@ function AppUI() {
   const {
     error,
     loading,
+    florMode,
     searchedTodos,
     toggleCheckTodo,
     deleteTodo
@@ -42,6 +43,7 @@ function AppUI() {
         ))}
       </TodoList>
       <TodoSearch />
+      {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
   )
 }
