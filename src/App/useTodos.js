@@ -1,9 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos() {
 
   // Recibing data from custom hook
   const {
@@ -79,8 +77,7 @@ function TodoProvider(props) {
     arrToSort.sort((a ,b) => a.completed - b.completed);
   };
 
-  return (
-    <TodoContext.Provider value={{
+  return ({
       loading,
       error,
       florMode,
@@ -92,10 +89,8 @@ function TodoProvider(props) {
       addTodo,
       toggleCheckTodo,
       deleteTodo,
-    }}>
-      {props.children}
-    </TodoContext.Provider>
+    }
   );
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };

@@ -1,10 +1,7 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
 import './CreateTodoButton.css';
 
-function CreateTodoButton() {
-
-  const { addTodo } = React.useContext(TodoContext);
+function CreateTodoButton({ addTodo }) {
 
   const [newTodoValue, setNewTodoValue] = React.useState('');
   const [isImportant, setIsImportant] = React.useState(false);

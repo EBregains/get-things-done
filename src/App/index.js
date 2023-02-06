@@ -1,22 +1,66 @@
 // import './App.css';
 
 import React from "react";
-import { AppUI } from "./AppUI";
-import { TodoProvider } from "../TodoContext";
-
-//  const defaultTodos = [
-//   { text: 'Cortar Cebolla', completed: false  , important: true, urgent: true },
-//   { text: 'Tomar el curso de Platzi', completed: true , important: false, urgent: true },
-//   { text: 'LLorar con la llorona', completed: false , important: true, urgent: false },
-//   { text: 'Mirar serie', completed: false , important: false, urgent: false },
-// ];
+import { useTodos } from "./useTodos";
+import { TodoCounter } from "../TodoCounter";
+import { TodoSearch } from "../TodoSearch";
+import { TodoList } from "../TodoList";
+import { TodoItem } from "../TodoItem";
+import { CreateTodoButton } from "../CreateTodoButton";
+import { EmptyList } from "../InfoGraphs/EmptyList";
+import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
+import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
+import { TodoHeader } from "../TodoHeader";
 
 function App() {
+
+  const {
+    error,
+    loading,
+    florMode,
+    searchedTodos,
+    toggleCheckTodo,
+    deleteTodo,
+    numCompletedTodos,
+    numTotalTodos,
+    searchValue,
+    setSearchValue,
+    addTodo
+  } = useTodos();
+
   return (
-      <TodoProvider>
-        <AppUI></AppUI>
-      </TodoProvider>
-  );
+    <React.Fragment>
+      <TodoHeader>
+        <TodoCounter 
+          numCompletedTodos={numCompletedTodos}
+          numTotalTodos={numTotalTodos} 
+        />
+        <CreateTodoButton 
+          addTodo={addTodo}
+        />
+      </TodoHeader>
+      <TodoList>
+        {error && <ErrorLoadingList />}
+        {loading && <LoadingSkeleton />}
+        {(!loading && !searchedTodos.length) && <EmptyList/>}
+        {searchedTodos.map( todo => (
+          <TodoItem key={todo.text} 
+            text={todo.text} 
+            completed={todo.completed}
+            important={todo.important}
+            urgent={todo.urgent}
+            onComplete={() => toggleCheckTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+      {florMode && <p className="Flor">🌸</p>}
+    </React.Fragment>
+  )
 }
 
 export default App;

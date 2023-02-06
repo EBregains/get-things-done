@@ -1,9 +1,8 @@
 
 import React from "react";
-import { TodoContext } from "../TodoContext";
 import './TodoCounter.css';
 
-function TodoCounter() {
+function TodoCounter({numCompletedTodos, numTotalTodos}) {
 
   const setCounterIcon = (total, done) => {
       let left = total - done;
@@ -15,7 +14,6 @@ function TodoCounter() {
       else return '🫠';
   }
 
-  const { numCompletedTodos, numTotalTodos } = React.useContext(TodoContext)
   return (
     <section className="TodoCounter">
       <h1 className="TodoCounter-title">
