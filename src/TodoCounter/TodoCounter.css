@@ -1,6 +1,7 @@
 .TodoCounter {
   padding: 0 5vw;
   display: flex;
+
   justify-content: space-between;
   align-items: center;
 }
@@ -19,7 +20,11 @@
   flex-direction: column;
   align-items: center;
   color: #fafafa;
-  width: 50%;
+}
+
+.TodoCounter-counter-icon {
+  font-size: 2.8rem;
+  padding-left: 2vw;
 }
 
 .-red {

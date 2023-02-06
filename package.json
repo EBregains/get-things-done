@@ -1,5 +1,5 @@
 {
-  "name": "react-intro",
+  "name": "get-things-done",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
+    
   },
-  "homepage": "https://ebregains.github.io/get-things-done/public"
+  "homepage": "https://ebregains.github.io/get-things-done"
 }
