@@ -39,21 +39,24 @@ function App() {
           addTodo={addTodo}
         />
       </TodoHeader>
-      <TodoList>
-        {error && <ErrorLoadingList />}
-        {loading && <LoadingSkeleton />}
-        {(!loading && !searchedTodos.length) && <EmptyList/>}
-        {searchedTodos.map( todo => (
+      <TodoList
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        onError={() => <ErrorLoadingList />}
+        onLoading={() => <LoadingSkeleton />}
+        onEmptyTodos={() => <EmptyList />}
+        render={todo => (
           <TodoItem key={todo.text} 
-            text={todo.text} 
-            completed={todo.completed}
-            important={todo.important}
-            urgent={todo.urgent}
-            onComplete={() => toggleCheckTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-          />
-        ))}
-      </TodoList>
+          text={todo.text} 
+          completed={todo.completed}
+          important={todo.important}
+          urgent={todo.urgent}
+          onComplete={() => toggleCheckTodo(todo.text)}
+          onDelete={() => deleteTodo(todo.text)}
+        />
+        )}
+      />
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
