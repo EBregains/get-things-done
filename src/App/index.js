@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTodos } from "./useTodos";
+import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
@@ -10,7 +11,7 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { EmptyList } from "../InfoGraphs/EmptyList";
 import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
 import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
-import { TodoHeader } from "../TodoHeader";
+import { EmptySearch } from "../InfoGraphs/EmptySearch";
 
 function App() {
 
@@ -40,12 +41,15 @@ function App() {
         />
       </TodoHeader>
       <TodoList
+        numTotalTodos={numTotalTodos}
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
+        searchedText={searchValue}
         onError={() => <ErrorLoadingList />}
         onLoading={() => <LoadingSkeleton />}
         onEmptyTodos={() => <EmptyList />}
+        onEmptySearchResult={() => <EmptySearch searchedText={searchValue}/>}
         render={todo => (
           <TodoItem key={todo.text} 
           text={todo.text} 

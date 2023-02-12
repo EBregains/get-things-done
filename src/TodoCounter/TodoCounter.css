@@ -21,7 +21,6 @@
   flex-direction: column;
   align-items: center;
   color: #fafafa;
-
 }
 
 .TodoCounter-counter-icon {
@@ -42,10 +41,13 @@
 }
 
 @media screen and (max-width: 700px) {
+
 .TodoCounter-title {
   font-size: 1.6rem;
 }
+
 .TodoCounter-counter {
   font-size: 1.2rem;
 }
+
 }
