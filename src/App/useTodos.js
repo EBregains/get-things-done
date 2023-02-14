@@ -3,6 +3,7 @@ import { useLocalStorage } from "./useLocalStorage";
 
 function useTodos() {
 
+  const openModal = true;
   // Recibing data from custom hook
   const {
     item: arrTodos,
@@ -78,6 +79,7 @@ function useTodos() {
   };
 
   return ({
+      openModal,
       loading,
       error,
       florMode,

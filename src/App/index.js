@@ -12,10 +12,12 @@ import { EmptyList } from "../InfoGraphs/EmptyList";
 import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
 import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
 import { EmptySearch } from "../InfoGraphs/EmptySearch";
+import { Modal } from "../Modal"
 
 function App() {
 
   const {
+    openModal,
     error,
     loading,
     florMode,
@@ -65,6 +67,12 @@ function App() {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
+      {!!openModal && (
+        <Modal>
+          {/* <QuoteGenerator></QuoteGenerator>
+          <CatMemes></CatMemes> */}
+        </Modal>
+      )}
       {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
   )
