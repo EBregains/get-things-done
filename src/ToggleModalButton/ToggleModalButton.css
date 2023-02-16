@@ -1,0 +1,15 @@
+.ToggleModalButton {
+  position: fixed;
+  bottom: 0px;
+  height: 67px;
+  width: 100%;
+  max-width: 1000px;
+  font-size: 24px;
+  text-decoration: none;
+  border: none;
+  font-family: 'Montserrat';
+  color: #FAFAFA;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #950740;
+}

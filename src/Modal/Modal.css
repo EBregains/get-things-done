@@ -10,3 +10,9 @@
   align-items: center;
   color: white;
 }
+
+.Modal {
+  background-color: #282c34;
+  padding: 2vw;
+  border-radius: 10px;
+}

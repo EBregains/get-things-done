@@ -7,16 +7,19 @@ import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
-import { CreateTodoButton } from "../CreateTodoButton";
+import { CreateTodoBar } from "../CreateTodoBar";
 import { EmptyList } from "../InfoGraphs/EmptyList";
 import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
 import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
 import { EmptySearch } from "../InfoGraphs/EmptySearch";
 import { Modal } from "../Modal"
-
+import { QuoteGenerator } from "../QuoteGenerator";
+import { CatMemes } from "../CatMemes";
+import { ToggleModalButton } from "../ToggleModalButton"
 function App() {
 
   const {
+    setOpenModal,
     openModal,
     error,
     loading,
@@ -38,8 +41,9 @@ function App() {
           numCompletedTodos={numCompletedTodos}
           numTotalTodos={numTotalTodos} 
         />
-        <CreateTodoButton 
+        <CreateTodoBar 
           addTodo={addTodo}
+          loading={loading}
         />
       </TodoHeader>
       <TodoList
@@ -51,7 +55,9 @@ function App() {
         onError={() => <ErrorLoadingList />}
         onLoading={() => <LoadingSkeleton />}
         onEmptyTodos={() => <EmptyList />}
-        onEmptySearchResult={() => <EmptySearch searchedText={searchValue}/>}
+        onEmptySearchResult={() =>  <EmptySearch 
+                                      searchedText={searchValue}
+                                    />}
         render={todo => (
           <TodoItem key={todo.text} 
           text={todo.text} 
@@ -66,13 +72,21 @@ function App() {
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        loading={loading}
       />
+ 
       {!!openModal && (
         <Modal>
-          {/* <QuoteGenerator></QuoteGenerator>
-          <CatMemes></CatMemes> */}
+          <QuoteGenerator></QuoteGenerator>
+          <CatMemes></CatMemes>
         </Modal>
       )}
+
+      <ToggleModalButton 
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
+
       {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
   )

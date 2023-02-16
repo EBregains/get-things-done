@@ -3,7 +3,6 @@ import { useLocalStorage } from "./useLocalStorage";
 
 function useTodos() {
 
-  const openModal = true;
   // Recibing data from custom hook
   const {
     item: arrTodos,
@@ -15,6 +14,7 @@ function useTodos() {
   const [florMode, setFlorMode] = React.useState(false);
   // SETTING UP REACT HOOKS
   const [searchValue, setSearchValue] = React.useState('');
+  const [openModal, setOpenModal] = React.useState(false);
   
   //  Variables to hold the counts of todos
   const numCompletedTodos = arrTodos.filter( todo => !!todo.completed ).length;
@@ -79,6 +79,7 @@ function useTodos() {
   };
 
   return ({
+      setOpenModal,
       openModal,
       loading,
       error,

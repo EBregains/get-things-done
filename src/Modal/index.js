@@ -1,10 +1,12 @@
 import React from "react";
 import "./Modal.css"
 
-function Modal() {
+function Modal(props) {
   return (
     <section className="ModalBackground">
-      Modal
+      <div className="Modal">
+        {props.children}
+      </div>
     </section>
   );
 }
