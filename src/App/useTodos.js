@@ -17,8 +17,9 @@ function useTodos() {
   const [openModal, setOpenModal] = React.useState(false);
   
   //  Variables to hold the counts of todos
-  const numCompletedTodos = arrTodos.filter( todo => !!todo.completed ).length;
   const numTotalTodos = arrTodos.length;
+  const numCompletedTodos = arrTodos.filter( todo => !!todo.completed ).length;
+  
 
   // Array that will be rendered
   let searchedTodos = [];
@@ -78,22 +79,26 @@ function useTodos() {
     arrToSort.sort((a ,b) => a.completed - b.completed);
   };
 
-  return ({
-      setOpenModal,
-      openModal,
-      loading,
-      error,
-      florMode,
-      numTotalTodos,
-      numCompletedTodos,
-      searchValue,
-      setSearchValue,
-      searchedTodos,
-      addTodo,
-      toggleCheckTodo,
-      deleteTodo,
-    }
-  );
+  const state = {
+    openModal,
+    loading,
+    error,
+    florMode,
+    numTotalTodos,
+    numCompletedTodos,
+    searchValue,
+    searchedTodos,
+  };
+
+  const stateUpdaters = {
+    setOpenModal,
+    setSearchValue,
+    addTodo,
+    toggleCheckTodo,
+    deleteTodo,
+  };
+    
+  return ({ state, stateUpdaters });
 }
 
 export { useTodos };

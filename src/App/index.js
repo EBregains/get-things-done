@@ -18,21 +18,28 @@ import { CatMemes } from "../CatMemes";
 import { ToggleModalButton } from "../ToggleModalButton"
 function App() {
 
+  // Custom hook
+  const { state, stateUpdaters } = useTodos();
+  // Destructuring hook state
+  const {
+    openModal,
+    loading,
+    error,
+    florMode,
+    numTotalTodos,
+    numCompletedTodos,
+    searchValue,
+    searchedTodos,
+  } = state;
+  // Destructuring hook state updaters
   const {
     setOpenModal,
-    openModal,
-    error,
-    loading,
-    florMode,
-    searchedTodos,
+    setSearchValue,
+    addTodo,
     toggleCheckTodo,
     deleteTodo,
-    numCompletedTodos,
-    numTotalTodos,
-    searchValue,
-    setSearchValue,
-    addTodo
-  } = useTodos();
+  } = stateUpdaters;
+
 
   return (
     <React.Fragment>
@@ -86,7 +93,7 @@ function App() {
         setOpenModal={setOpenModal}
         openModal={openModal}
       />
-
+      
       {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
   )
