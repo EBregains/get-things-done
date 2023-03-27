@@ -6,7 +6,7 @@ function TodoCounter({numCompletedTodos, numTotalTodos}) {
 
   const setCounterIcon = (total, done) => {
       let left = total - done;
-      if ( done === 0) return '🤔'
+      if ( total === 0) return '🤔'
       if ( left === 0) return '😎';
       else if ( left <= 4) return '🙂'
       else if ( left <= 8) return '😰';

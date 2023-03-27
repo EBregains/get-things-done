@@ -9,4 +9,4 @@ function EmptySearch({searchedText}) {
   )
 }
 
-export {EmptySearch};
+export { EmptySearch };

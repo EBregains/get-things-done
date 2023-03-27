@@ -1,7 +1,8 @@
 .TodoSearch {
   margin: 0 5vw;
+  margin-bottom: 120px;
   padding: 6px 0 6px 6px;
-  background-color: #FAFAFA;
+  background-color: #4E4E50;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,10 +15,11 @@
   width: calc(100% - 90px);
   height: 56px;
   border-width: 0px;
-  background-color: #FAFAFA;
+  background-color: #4E4E50;
   padding: 0px 24px;
   font-family: 'Montserrat';
   font-size: 16px;
+  color: white;
   border-radius: 6px;
 }
 
@@ -41,4 +43,9 @@
   'wght' 400,
   'GRAD' 0,
   'opsz' 48
+}
+
+input:disabled {
+  opacity: 25%;
+
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import './CreateTodoButton.css';
+import './CreateTodoBar.css';
 
-function CreateTodoButton({ addTodo }) {
+function CreateTodoBar({ addTodo , loading}) {
 
   const [newTodoValue, setNewTodoValue] = React.useState('');
   const [isImportant, setIsImportant] = React.useState(false);
@@ -37,32 +37,35 @@ function CreateTodoButton({ addTodo }) {
 
   return (
     <form
-      className="CreateTodoButton"
+      className="CreateTodoBar"
       onSubmit={onSubmit}
     >
-      <div className="CreateTodoButton-taskbar">
+      <div className="CreateTodoBar-taskbar">
         <button
-          className="CreateTodoButton-taskbar-button"
+          className="CreateTodoBar-taskbar-button"
           type="submit"
         >
           +
         </button>
         <input
           value={newTodoValue}
-          className="CreateTodoButton-taskbar-input"
+          className="CreateTodoBar-taskbar-input"
           placeholder="Create a new task..."
           onChange={onChange}
+          disabled={loading}
         />
 
       </div>
-      <div className="CreateTodoButton-tagbar">
+      <div className="CreateTodoBar-tagbar">
         <span className="tagbar-input bg-pink">
           <input 
             type="checkbox" 
             id="important" 
             name="todo-tag" 
             checked={isImportant}
-            onChange={() => checkboxOnChange(isImportant, setIsImportant)}/>
+            onChange={() => checkboxOnChange(isImportant, setIsImportant)}
+            disabled={loading}
+            />
           <label className="noselect" htmlFor="important">Important</label>
         </span>
         <span className="tagbar-input bg-red">
@@ -71,7 +74,9 @@ function CreateTodoButton({ addTodo }) {
             id="urgent"
             name="todo-tag"
             checked={isUrgent}
-            onChange={() => checkboxOnChange(isUrgent, setIsUrgent)} />
+            onChange={() => checkboxOnChange(isUrgent, setIsUrgent)} 
+            disabled={loading}
+            />
           <label className="noselect" htmlFor="urgent">Urgent</label>
         </span>
       </div>
@@ -79,4 +84,4 @@ function CreateTodoButton({ addTodo }) {
   );
 }
 
-export { CreateTodoButton };
+export { CreateTodoBar };
