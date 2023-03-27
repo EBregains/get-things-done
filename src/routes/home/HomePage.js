@@ -1,22 +1,22 @@
-// import './App.css';
 
 import React from "react";
 import { useTodos } from "./useTodos";
-import { TodoHeader } from "../TodoHeader";
-import { TodoCounter } from "../TodoCounter";
-import { TodoSearch } from "../TodoSearch";
-import { TodoList } from "../TodoList";
-import { TodoItem } from "../TodoItem";
-import { CreateTodoBar } from "../CreateTodoBar";
-import { EmptyList } from "../InfoGraphs/EmptyList";
-import { ErrorLoadingList } from "../InfoGraphs/ErrorLoadingList";
-import { LoadingSkeleton } from "../InfoGraphs/LoadingSkeleton";
-import { EmptySearch } from "../InfoGraphs/EmptySearch";
-import { Modal } from "../Modal"
-import { QuoteGenerator } from "../QuoteGenerator";
-import { CatMemes } from "../CatMemes";
-import { ToggleModalButton } from "../ToggleModalButton"
-function App() {
+import { TodoHeader } from "../../ui/TodoHeader";
+import { TodoCounter } from "../../ui/TodoCounter";
+import { TodoSearch } from "../../ui/TodoSearch";
+import { TodoList } from "../../ui/TodoList";
+import { TodoItem } from "../../ui/TodoItem";
+import { CreateTodoBar } from "../../ui/CreateTodoBar";
+import { EmptyList } from "../../ui/InfoGraphs/EmptyList";
+import { ErrorLoadingList } from "../../ui/InfoGraphs/ErrorLoadingList";
+import { LoadingSkeleton } from "../../ui/InfoGraphs/LoadingSkeleton";
+import { EmptySearch } from "../../ui/InfoGraphs/EmptySearch";
+import { Modal } from "../../ui/Modal"
+import { QuoteGenerator } from "../../ui/QuoteGenerator";
+import { CatMemes } from "../../ui/CatMemes";
+import { ToggleModalButton } from "../../ui/ToggleModalButton"
+
+function HomePage() {
 
   // Custom hook
   const { state, stateUpdaters } = useTodos();
@@ -99,4 +99,4 @@ function App() {
   )
 }
 
-export default App;
+export { HomePage };
