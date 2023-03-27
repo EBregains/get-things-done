@@ -89,10 +89,10 @@ function HomePage() {
         </Modal>
       )}
 
-      <ToggleModalButton 
+      {/* <ToggleModalButton 
         setOpenModal={setOpenModal}
         openModal={openModal}
-      />
+      /> */}
       
       {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
