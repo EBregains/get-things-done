@@ -12,9 +12,9 @@ Easy and plain ToDo tracker. One can add, remove, and complete tasks. The tasks 
 
 One can toggle the "important" and the "urgent" tag by clicking on them, or just by using on of these shortcuts while writing the todo (without the quotes)
 
--"$i" for important
--"$u" for urgent
--"$$ui" or "$$iu" to add both
+- "$i" for important
+- "$u" for urgent
+- "$$ui" or "$$iu" to add both
 
 So no needance to put your hands out of the keyboard!
 
