@@ -1,0 +1,56 @@
+.ListsBar {
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat';
+}
+
+.ListsBar-list {
+  background: rgba(0, 0, 0, 0.2);
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  box-shadow: 0 0 150px rgba(0, 0, 0, 0.5);
+}
+
+.ListsBar--toggleButton {
+  z-index: 2;
+  padding: 0px 20px;
+  margin: 16px;
+  height: 52px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  color: #FAFAFA;
+  background-color: #008CBA;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ListsBar--hidden {
+  display: none;
+}
+
+.ListsBar-newList {
+  background: #008CBA;
+  color: #FAFAFA;
+  font-family: 'Montserrat';
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  height: 100%;
+  width: fit-content;
+  font-size: 16px;
+  text-decoration: none;
+}

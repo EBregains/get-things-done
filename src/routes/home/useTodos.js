@@ -1,25 +1,33 @@
+// add comments to the code to explain what it does
+
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { useModal } from "./useModal";
 
 function useTodos() {
 
   // Recibing data from custom hook
   const {
-    item: arrTodos,
-    saveItemLocal: saveTodosLocal,
+    item: arrList,
+    saveItemLocal: saveListLocal,
     loading,
     error,
-  } = useLocalStorage('TODOS_V1', []);
+  } = useLocalStorage('TODOS_V1', [{ name: 'Your list', todos: [], id: 0 }, { name: 'My list', todos: [], id: 1 }]);
 
-  const [florMode, setFlorMode] = React.useState(false);
+  const {
+    openModal,
+    setOpenModal,
+  } = useModal();
+
   // SETTING UP REACT HOOKS
+  const [activeList, setActiveList] = React.useState(0);
+  const [florMode, setFlorMode] = React.useState(false); // Flor mode
   const [searchValue, setSearchValue] = React.useState('');
-  const [openModal, setOpenModal] = React.useState(false);
-  
+
   //  Variables to hold the counts of todos
+  const arrTodos = arrList[activeList].todos;
   const numTotalTodos = arrTodos.length;
   const numCompletedTodos = arrTodos.filter( todo => !!todo.completed ).length;
-  
 
   // Array that will be rendered
   let searchedTodos = [];
@@ -44,33 +52,42 @@ function useTodos() {
       }
       text = text + sufix
     });
-    // Check for the word "Flor" to start flor mode.
-    if ( text.match(/Flor/) ) setFlorMode(true);
     // Add todo
-    const newArrTodos = [...arrTodos];
-    newArrTodos.push({
+    const updatedList = arrList[activeList];
+    updatedList.todos.push({
       text,
       completed: false,
       urgent: isUrgent,
       important: isImportant,
     });
-    sortTodos(newArrTodos);
-    saveTodosLocal(newArrTodos);
+    sortTodos(updatedList.todos);
+    arrList[activeList] = updatedList;
+    saveListLocal(arrList);
+    // Check for the word "Flor" to start flor mode.
+    if ( text.match(/Flor/) ) setFlorMode(true);
   }
+
   // Function that calls the todos hook
   const toggleCheckTodo = (text) => {
     const todoIndex = arrTodos.findIndex( todo => todo.text === text);
-    const newArrTodos = [...arrTodos];
-    newArrTodos[todoIndex].completed = !newArrTodos[todoIndex].completed;
-    sortTodos(newArrTodos);
-    saveTodosLocal(newArrTodos);
+    const updatedList = arrList[activeList];
+    updatedList.todos[todoIndex].completed = !updatedList.todos[todoIndex].completed;
+    sortTodos(updatedList.todos);
+    arrList[activeList] = updatedList;
+    saveListLocal(arrList);
   };
 
   const deleteTodo = (text) => {
     const todoIndex = arrTodos.findIndex( todo => todo.text === text);
-    const newArrTodos = [...arrTodos];
-    newArrTodos.splice(todoIndex, 1);
-    saveTodosLocal(newArrTodos);
+    const updatedList = arrList[activeList];
+    updatedList.todos.splice(todoIndex, 1);
+    arrList[activeList] = updatedList;
+    saveListLocal(arrList);
+  };
+
+  const deleteList = (id) => {
+    saveListLocal(arrList.splice(id, 1));
+    if (activeList === id) setActiveList(0);
   };
 
   const sortTodos = (arrToSort) => {
@@ -80,6 +97,8 @@ function useTodos() {
   };
 
   const state = {
+    arrList,
+    activeList,
     openModal,
     loading,
     error,
@@ -91,11 +110,14 @@ function useTodos() {
   };
 
   const stateUpdaters = {
+    setActiveList,
     setOpenModal,
     setSearchValue,
     addTodo,
     toggleCheckTodo,
     deleteTodo,
+    setActiveList,
+    deleteList,
   };
     
   return ({ state, stateUpdaters });

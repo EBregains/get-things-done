@@ -3,7 +3,7 @@ import React from "react";
 
 function useLocalStorage(itemName, initialValue) {
 
-  const [state, dispatch] = React.useReducer(reducer, initialState({initialValue}))
+  const [state, dispatch] = React.useReducer(reducer, initialState({initialValue}));
 
   const {
     error,
@@ -46,7 +46,7 @@ function useLocalStorage(itemName, initialValue) {
   const saveItemLocal = (newItem) => {
     // Manejamos la tarea dentro de un try/catch por si ocurre algún error
     try {
-      const stringifiedItem = JSON.stringify(newItem);
+      const stringifiedItem = JSON.stringify(item);
       localStorage.setItem(itemName, stringifiedItem);
       OnSave(newItem);
     } catch(error) {
@@ -77,6 +77,7 @@ const actionTypes = {
   finish: 'FINISH',
 }
 
+// Objeto que contiene los reducers
 const reducerObject = (state, payload) => ({
   [actionTypes.error]: {
     ...state,
@@ -96,6 +97,8 @@ const reducerObject = (state, payload) => ({
     loading: false,
   },
 });
+
+// Generamos un reducer para manejar los estados
 const reducer = (state, action) => {
   return reducerObject(state, action.payload)[action.type] || state;
 }

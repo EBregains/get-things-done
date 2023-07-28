@@ -11,10 +11,16 @@ import { EmptyList } from "../../ui/InfoGraphs/EmptyList";
 import { ErrorLoadingList } from "../../ui/InfoGraphs/ErrorLoadingList";
 import { LoadingSkeleton } from "../../ui/InfoGraphs/LoadingSkeleton";
 import { EmptySearch } from "../../ui/InfoGraphs/EmptySearch";
-import { Modal } from "../../ui/Modal"
-import { QuoteGenerator } from "../../ui/QuoteGenerator";
-import { CatMemes } from "../../ui/CatMemes";
-import { ToggleModalButton } from "../../ui/ToggleModalButton"
+import { ListsBar } from "../../ui/ListsBar"; 
+import { Modal } from "../../ui/Modal";
+import { CatMemes } from "../../ui/Modal/CatMemes";
+import { ListItem } from "../../ui/ListItem";
+
+// const getRandomNumber = () => random(1, 123);
+
+const generateKey = (pre) => {
+  return `${ pre }_${ new Date().getTime() }`;
+};
 
 function HomePage() {
 
@@ -22,6 +28,8 @@ function HomePage() {
   const { state, stateUpdaters } = useTodos();
   // Destructuring hook state
   const {
+    arrList,
+    activeList,
     openModal,
     loading,
     error,
@@ -33,16 +41,42 @@ function HomePage() {
   } = state;
   // Destructuring hook state updaters
   const {
-    setOpenModal,
+    setActiveList,
+    // setOpenModal,
     setSearchValue,
     addTodo,
     toggleCheckTodo,
     deleteTodo,
+    deleteList,
   } = stateUpdaters;
 
+  // const [image, setImage] = React.useState([]);
 
+  // const AddFox = (event) => {
+  //   const newImageItem = { 
+  //     id: generateKey(`img`),
+  //     url: `https://randomfox.ca/images/${getRandomNumber()}.jpg`
+  //   };
+  //   setImage([...image, newImageItem]);
+  //   window.plausible('add_fox');
+  // };
+
+  // openModal = true;
+  
   return (
     <React.Fragment>
+      <ListsBar
+        activeList={activeList}
+        arrList={arrList}
+        render={ item =>
+          (<ListItem key={item.id}
+            onClick={() => setActiveList(item.id)}
+            onDelete={() => deleteList(item.id)}
+            name={item.name}
+            active={item.id === activeList}
+          />)
+        }
+      />
       <TodoHeader>
         <TodoCounter 
           numCompletedTodos={numCompletedTodos}
@@ -63,8 +97,8 @@ function HomePage() {
         onLoading={() => <LoadingSkeleton />}
         onEmptyTodos={() => <EmptyList />}
         onEmptySearchResult={() =>  <EmptySearch 
-                                      searchedText={searchValue}
-                                    />}
+          searchedText={searchValue}
+          />}
         render={todo => (
           <TodoItem key={todo.text} 
           text={todo.text} 
@@ -73,26 +107,21 @@ function HomePage() {
           urgent={todo.urgent}
           onComplete={() => toggleCheckTodo(todo.text)}
           onDelete={() => deleteTodo(todo.text)}
-        />
-        )}
+          />
+          )}
       />
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         loading={loading}
       />
- 
+      
+      {/* <ToggleModalButton></ToggleModalButton> */}
       {!!openModal && (
         <Modal>
-          <QuoteGenerator></QuoteGenerator>
           <CatMemes></CatMemes>
         </Modal>
       )}
-
-      {/* <ToggleModalButton 
-        setOpenModal={setOpenModal}
-        openModal={openModal}
-      /> */}
       
       {florMode && <p className="Flor">🌸</p>}
     </React.Fragment>
